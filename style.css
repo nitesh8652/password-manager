@@ -93,4 +93,21 @@ padding: 15px 5px 5px 0px;
     justify-content: center;
     padding-top: 13px;
     gap: 5px;
+    display: none;
+}
+
+.functions button{
+    background-color: #ffffff;
+    color: #000000;
+    border: 0;
+    height: 36px;
+    width: 68px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.functions button:hover{
+    background-color: #000000;
+    color: #ffffff;
+
 }

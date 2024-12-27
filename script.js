@@ -1,12 +1,15 @@
 let input = document.querySelector(".input");
 let copy = document.querySelector(".copy");
 let generate = document.querySelector(".generate");
-
+let dropdown = document.querySelector(".dropdown");
+let functions = document.querySelector(".functions");
 
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
 const number = "1234567890";
 const symbol = "!@#$%^&*()_+";
+
+
 
 generate.addEventListener("click", () => {
     let pass = "";
@@ -34,3 +37,8 @@ copy.addEventListener("click", () => {
         console.log("No password to copy");
     }
 });
+
+dropdown.addEventListener("click", () => {
+    functions.style.display="block";
+    dropdown.src = "assets/up.png";
+})
