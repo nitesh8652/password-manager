@@ -13,12 +13,12 @@
 }
 
 .card {
-    height: 370px;
+    /* height: 370px; */
     width: 570px;
     background-color: #77384d;
     border-radius: 7px;
-
-
+    
+    position: relative;
 }
 
 .txt{
@@ -58,6 +58,7 @@
     justify-content: center;
     height: 50%;
     gap: 6px;
+    margin-top: 60px;
 }
 
 .input {
@@ -79,7 +80,8 @@
 .generate {
     position: relative;
     left: 50%;
-    transform: translateX(-50%)
+    transform: translateX(-50%);
+    margin-top: 30px;
 }
 
 .dropdown{
@@ -88,12 +90,16 @@ width: 25px;
 padding: 15px 5px 5px 0px;
 }
 
+.hide{
+    display: none;
+  
+}
+
 .functions{
     display: flex;
-    justify-content: center;
-    padding-top: 13px;
-    gap: 5px;
-    display: none;
+    gap: 8px;
+
+    padding: 12px 0px 0px 16px;
 }
 
 .functions button{
@@ -106,8 +112,18 @@ padding: 15px 5px 5px 0px;
     text-align: center;
 }
 
-.functions button:hover{
-    background-color: #000000;
-    color: #ffffff;
+.save{
+    position: relative;
+    left: 30%;
+}
 
+.strength{
+    padding: 12px;
+    font-size: 23px;
+    background-color: #6c223b;
+    width: 530px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 70px;
 }
