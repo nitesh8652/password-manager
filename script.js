@@ -20,6 +20,7 @@ let includeUppercase = false;
 let includeLowercase = false;
 let includeNumbers = false;
 let includeSymbols = false;
+let flag = 0;
 
 copy.addEventListener("click", () => {
     let pass = input.value;
@@ -37,29 +38,23 @@ copy.addEventListener("click", () => {
 });
 
 
-function analyze (takat){
-    let checkuppercase =/[A-Z]/.test(takat) ? 1 :0;
-    let checklowercase =/[a-z]/.test(takat)?1:0;
-    let checksymbol =/[!@#$%^&*()_+]/.test(takat)?1:0;
-    let checknumber =/[0-9]/.test(takat)?1:0;
-    let total = checkuppercase + checklowercase + checksymbol + checknumber;
-    if(total === 4){
-        console.log("strong")
-    }else if (total >=2){
-        console.log("medium")
-    }else{
-        console.log("weak")
+function analyze(takat) {
+    let checkUppercase = /[A-Z]/.test(takat) ? 1 : 0;
+    let checkLowercase = /[a-z]/.test(takat) ? 1 : 0;
+    let checkSymbol = /[!@#$%^&*()_+]/.test(takat) ? 1 : 0;
+    let checkNumber = /[0-9]/.test(takat) ? 1 : 0;
+
+    let total = checkUppercase + checkLowercase + checkSymbol + checkNumber;
+
+    if (total === 4) {
+        return "Strong";
+    } else if (total >= 2) {
+        return "Medium";
+    } else {
+        return "Weak";
     }
-    
- 
 }
 
-let takat = input.value;
-let strength = analyze(takat);
-console.log(`Password Strength: ${strength}`);
-
-
-let flag = 0
 
 dropdown.addEventListener("click", () => {
     if(flag==0){
@@ -98,7 +93,8 @@ uppercasebttn.addEventListener("click", () => {
         pass += all.charAt(char);
     }
     input.value = pass;
-      return;
+  
+    //   return;
     }
   
 
@@ -108,7 +104,8 @@ uppercasebttn.addEventListener("click", () => {
       pass += characterPool.charAt(randomIndex);
     }
     input.value = pass; // Display the password
-    
+    let strength = analyze(pass);
+    console.log(`Password Strength: ${strength}`);
   });
 
 lowercasebttn.addEventListener("click", () => {
