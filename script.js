@@ -24,15 +24,28 @@ let flag = 0;
 
 copy.addEventListener("click", () => {
     let pass = input.value;
-    if (pass){
+    const revertbg = copy.style.backgroundColor;
+    const reverttext = copy.style.color;
+    const scale = copy.style.scale;
+
+    copy.style.backgroundColor = "black";
+    copy.style.color = "white";
+    copy.style.scale = "0.90";
+    setTimeout(() => {
+        copy.style.backgroundColor = revertbg;
+        copy.style.color = reverttext;
+        copy.style.scale = scale;
+    }, 300);
+
+    if (pass) {
         navigator.clipboard.writeText(pass)
-        .then(()=>{
-            console.log("Password copied to clipboard");
-        })
-        .catch((err)=>{
-            console.log("failed to copy",err);
-        })
-    }else{
+            .then(() => {
+                console.log("Password copied to clipboard");
+            })
+            .catch((err) => {
+                console.log("failed to copy", err);
+            })
+    } else {
         console.log("No password to copy");
     }
 });
@@ -56,16 +69,30 @@ function analyze(takat) {
 }
 
 
+
 dropdown.addEventListener("click", () => {
-    if(flag==0){
-        functions.style.display="block";
+
+    let func = document.querySelector(".functions");
+
+    dropdown.style.transform = "rotate(180deg)";
+    if (flag == 0) {
+        functions.style.display = "block";
         dropdown.src = "assets/up.png";
-        flag=1;
-        }else{
-            dropdown.src="assets/down.png";
-            functions.style.display="none";
-            flag=0;
-        }
+        dropdown.style.transform = "rotate(0deg)";
+        flag = 1;
+        setTimeout(()=>{
+            func.style.height="50px"
+        })
+    } else {
+        dropdown.src = "assets/up.png";
+        dropdown.style.transform = "rotate(180deg)";
+        func.style.height="0";
+        flag = 0;
+        setTimeout(()=>{
+            functions.style.display = "none";
+            
+        },500)
+    }
 })
 
 
@@ -73,73 +100,92 @@ uppercasebttn.addEventListener("click", () => {
     includeUppercase = !includeUppercase; // Toggle selection
     uppercasebttn.style.backgroundColor = includeUppercase ? "black" : "";
     uppercasebttn.style.color = includeUppercase ? "#ffffff" : "";
-  });
+});
 
-  generate.addEventListener("click", () => {
+generate.addEventListener("click", () => {
     let pass = "";
     let characterPool = "";
-  
+
     // for selection
     if (includeUppercase) characterPool += uppercase;
     if (includeLowercase) characterPool += lowercase;
     if (includeNumbers) characterPool += number;
     if (includeSymbols) characterPool += symbol;
-  
+
     //    generate random password
     if (characterPool === "") {
-    let all = uppercase + lowercase + number + symbol;
-    for(let i=0;i<15;i++){
-        let char = Math.floor(Math.random()*all.length);
-        pass += all.charAt(char);
+        let all = uppercase + lowercase + number + symbol;
+        for (let i = 0; i < 15; i++) {
+            let char = Math.floor(Math.random() * all.length);
+            pass += all.charAt(char);
+        }
+        input.value = pass;
+
+        //   return;
     }
-    input.value = pass;
-  
-    //   return;
-    }
-  
+
+
 
     // Generate selected  password
     for (let i = 0; i < 15; i++) {
-      let randomIndex = Math.floor(Math.random() * characterPool.length);
-      pass += characterPool.charAt(randomIndex);
+        let randomIndex = Math.floor(Math.random() * characterPool.length);
+        pass += characterPool.charAt(randomIndex);
     }
     input.value = pass; // Display the password
     let strength = analyze(pass);
     console.log(`Password Strength: ${strength}`);
-  });
+    let indicator = document.querySelector(".strength");
+    // indicator.textContent = `Password Strength: ${strength}`;
+    // indicator.style.fontWeight="900";
+    let color;
+    if (strength === "Strong") {
+        color = "green";
+    }else if (strength === "Medium") {
+            color = "yellow";
+        }
+        else {
+            color = "red";
+        }
+    
+        indicator.innerHTML = `Password Strength : <span style="font-weight:900; font-family: 'Poppins', sans-serif; color:${color}">${strength}</span>`;
 
-lowercasebttn.addEventListener("click", () => {
-    includeLowercase = !includeLowercase; // Toggle selection
-    lowercasebttn.style.backgroundColor = includeLowercase ? "black" : "";
-    lowercasebttn.style.color = includeLowercase ? "#ffffff" : "";
-})
+    
+});
 
-symbolbttn.addEventListener("click", () => {
-    includeSymbols = !includeSymbols; 
-    symbolbttn.style.backgroundColor = includeSymbols ? "black" : "";
-    symbolbttn.style.color = includeSymbols ? "#ffffff" : "";
-})
 
-numberbttn.addEventListener("click", () => {
-    includeNumbers = !includeNumbers; 
-    numberbttn.style.backgroundColor = includeNumbers ? "black" : "";
-    numberbttn.style.color = includeNumbers ? "#ffffff" : "";
-})
 
-save.addEventListener("click",()=>{
-    let password = input.value;
-    if(!password){
-        alert("kachaww")
-        return;
-    }
-    let blob = new Blob([password],{type:"text/plain"});
-    let link = document.createElement("a");
+    lowercasebttn.addEventListener("click", () => {
+        includeLowercase = !includeLowercase; // Toggle selection
+        lowercasebttn.style.backgroundColor = includeLowercase ? "black" : "";
+        lowercasebttn.style.color = includeLowercase ? "#ffffff" : "";
+    })
 
-    //file name;
-    link.download="Your_password.txt";
-    link.href=URL.createObjectURL(blob);
-    link.click();
-    link.remove();
-})
+    symbolbttn.addEventListener("click", () => {
+        includeSymbols = !includeSymbols;
+        symbolbttn.style.backgroundColor = includeSymbols ? "black" : "";
+        symbolbttn.style.color = includeSymbols ? "#ffffff" : "";
+    })
+
+    numberbttn.addEventListener("click", () => {
+        includeNumbers = !includeNumbers;
+        numberbttn.style.backgroundColor = includeNumbers ? "black" : "";
+        numberbttn.style.color = includeNumbers ? "#ffffff" : "";
+    })
+
+    save.addEventListener("click", () => {
+        let password = input.value;
+        if (!password) {
+            alert("kachaww")
+            return;
+        }
+        let blob = new Blob([password], { type: "text/plain" });
+        let link = document.createElement("a");
+
+        //file name;
+        link.download = "Your_password.txt";
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        link.remove();
+    })
 
 

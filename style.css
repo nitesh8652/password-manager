@@ -3,6 +3,9 @@
     margin: 0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 .container {
     display: flex;
     align-items: center;
@@ -17,11 +20,11 @@
     width: 570px;
     background-color: #77384d;
     border-radius: 7px;
-    
+
     position: relative;
 }
 
-.txt{
+.txt {
     display: flex;
 }
 
@@ -58,7 +61,8 @@
     justify-content: center;
     height: 50%;
     gap: 6px;
-    margin-top: 60px;
+    margin-top: 100px;
+
 }
 
 .input {
@@ -69,61 +73,96 @@
     width: 300px;
 }
 
+
 .copy {
     border: none;
     outline: 0;
     border-radius: 10px;
-    height: 50px;
-    width: 100px;
+    height: 45px;
+    width: 81px;
+    font-size: 20px;font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s ease, color 0.5s ease;
 }
 
 .generate {
+    border-style: none;
+    border-radius: 7px;
+    height: 46px;
+    width: 87px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 30px;
+    background-color: black;
+    color: white;
+    font-family: cursive;
+
+    font-size: 16px;
 }
 
-.dropdown{
-height: 25px;
-width: 25px;
-padding: 15px 5px 5px 0px;
+.generate:active {
+    box-shadow: 0 0 30px #1E0E00;
+    background-color: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
-.hide{
-    display: none;
+.copy:active {
+    transform: scale(0.9);
+    background-color: rgb(0, 0, 0);
+}
+
+.dropdown {
+    height: 25px;
+    width: 25px;
+    padding: 15px 5px 5px 0px;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: 100% 50%;
+    transform-origin: center;
+}
+
+.hide {
   
+    display: none;
+    
 }
 
-.functions{
+.functions {
     display: flex;
     gap: 8px;
-
     padding: 12px 0px 0px 16px;
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-out;
+    
 }
 
-.functions button{
+.functions button {
     background-color: #ffffff;
     color: #000000;
     border: 0;
     height: 36px;
+
     width: 68px;
     border-radius: 7px;
     text-align: center;
 }
 
-.save{
-    position: relative;
+.save {
+    
     left: 30%;
 }
 
-.strength{
+.strength {
     padding: 12px;
-    font-size: 23px;
+    font-size: 28px;
     background-color: #6c223b;
     width: 530px;
     height: 50px;
     margin: 0 auto;
     border-radius: 10px;
     margin-top: 70px;
+
 }
