@@ -2,9 +2,7 @@
     padding: 0;
     margin: 0;
 }
-
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 
 .container {
     display: flex;
@@ -16,11 +14,9 @@
 }
 
 .card {
-    /* height: 370px; */
     width: 570px;
     background-color: #77384d;
     border-radius: 7px;
-
     position: relative;
 }
 
@@ -54,15 +50,12 @@
 }
 
 .essentials {
-    /* top: 50%;
-    transform: translatey(430%); */
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50%;
     gap: 6px;
     margin-top: 100px;
-
 }
 
 .input {
@@ -73,14 +66,14 @@
     width: 300px;
 }
 
-
 .copy {
     border: none;
     outline: 0;
     border-radius: 10px;
     height: 45px;
     width: 81px;
-    font-size: 20px;font-weight: 600;
+    font-size: 20px;
+    font-weight: 600;
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s ease, color 0.5s ease;
 }
@@ -96,9 +89,9 @@
     margin-top: 30px;
     background-color: black;
     color: white;
-    font-family: cursive;
-
-    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .generate:active {
@@ -123,9 +116,7 @@
 }
 
 .hide {
-  
     display: none;
-    
 }
 
 .functions {
@@ -135,24 +126,25 @@
     position: absolute;
     height: 0;
     overflow: hidden;
+    background-color: #6c223bcc;
     transition: height 0.5s ease-out;
-    
+    width: 97%;
+    border-radius: 12px;
 }
 
 .functions button {
-    background-color: #ffffff;
-    color: #000000;
     border: 0;
     height: 36px;
-
     width: 68px;
     border-radius: 7px;
     text-align: center;
 }
 
 .save {
-    
-    left: 30%;
+    position: absolute;
+    left: 86%;
+    background-color: rgb(224, 224, 40);
+    font-weight: 700;
 }
 
 .strength {
@@ -164,5 +156,24 @@
     margin: 0 auto;
     border-radius: 10px;
     margin-top: 70px;
+}
 
+@media (2px <=width <=600px) {
+    .card {
+        width: 420px;
+    }
+    .strength {
+        width: 380px;
+        padding: 6px;
+        margin-top: 20px;
+    }
+    .functions {
+        width: 96%;
+    }
+    .save {
+        left: 82%;
+    }
+    .essentials {
+        margin-top: 80px;
+    }
 }

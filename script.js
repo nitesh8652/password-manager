@@ -139,16 +139,16 @@ generate.addEventListener("click", () => {
     // indicator.style.fontWeight="900";
     let color;
     if (strength === "Strong") {
-        color = "green";
+        color = "yellow";
     }else if (strength === "Medium") {
-            color = "yellow";
+        color = "green";
         }
         else {
-            color = "red";
+            color = "rgb(221, 45, 45)";
         }
     
         indicator.innerHTML = `Password Strength : <span style="font-weight:900; font-family: 'Poppins', sans-serif; color:${color}">${strength}</span>`;
-
+ 
     
 });
 
