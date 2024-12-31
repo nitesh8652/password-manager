@@ -175,7 +175,7 @@ generate.addEventListener("click", () => {
     save.addEventListener("click", () => {
         let password = input.value;
         if (!password) {
-            alert("kachaww")
+            alert("Password is Empty")
             return;
         }
         let blob = new Blob([password], { type: "text/plain" });
